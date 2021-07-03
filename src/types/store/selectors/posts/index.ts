@@ -5,7 +5,35 @@ const getPostListSelector = (state: AppStateType) => {
 };
 
 const getPostListLoading = (state: AppStateType) => {
-  return state.posts.isLoadingPosts;
+  return state.posts.isLoading;
 };
 
-export { getPostListSelector, getPostListLoading };
+const getPostDetailSelector = (state: AppStateType) => {
+  return state.posts.selectedPostDetail;
+};
+
+const getPostDetailLoading = (state: AppStateType) => {
+  return state.posts.isLoading;
+};
+
+const getCommentListSelector = (state: AppStateType) => {
+  return state.posts.commentList;
+};
+
+const getCommentListLoading = (state: AppStateType) => {
+  return state.posts.isLoading;
+};
+
+const getLikeListSelector = (state: AppStateType) => {
+  return state.posts.likeList;
+};
+
+export {
+  getPostListSelector,
+  getPostListLoading,
+  getPostDetailSelector,
+  getPostDetailLoading,
+  getCommentListSelector,
+  getCommentListLoading,
+  getLikeListSelector,
+};

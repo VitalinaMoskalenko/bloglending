@@ -1,13 +1,25 @@
 import { ThunkDispatch } from "redux-thunk";
-import { fetchPostsService } from "../../../services/posts";
+import {
+  fetchCommentsService,
+  fetchPostByIdService,
+  fetchPostsService,
+} from "../../../services";
 import {
   ActionConstType,
   GetPostsActionType,
   GetPostsSuccessActionType,
   GetPostsErrorActionType,
   AppStateType,
+  GetPostDetailActionType,
+  GetPostDetailSuccessActionType,
+  GetPostDetailErrorActionType,
+  GetCommentsActionType,
+  GetCommentsSuccessActionType,
+  GetCommentsErrorActionType,
 } from "../../../types";
-import { Posts } from "../../../types/models";
+import { Comments, Posts } from "../../../types/models";
+
+// POST ACTION
 
 export const getPostsAction = (): GetPostsActionType => {
   return {
@@ -41,5 +53,90 @@ export const fetchPostsAction = () => {
     } else {
       dispatch(getPostsErrorAction(response));
     }
+  };
+};
+
+// POST DETAIL ACTION
+
+export const getPostDetailAction = (): GetPostDetailActionType => {
+  return {
+    type: ActionConstType.GET_POST_DETAIL,
+  };
+};
+
+export const getPostDetailSuccessAction = (
+  data: Posts
+): GetPostDetailSuccessActionType => {
+  return {
+    type: ActionConstType.GET_POST_DETAIL_SUCCESS,
+    data,
+  };
+};
+
+export const getPostDetailErrorAction = (
+  error: any
+): GetPostDetailErrorActionType => {
+  return {
+    type: ActionConstType.GET_POST_DETAIL_ERROR,
+    error,
+  };
+};
+
+export const fetchPostsDetailAction = (id: string) => {
+  return async (dispatch: ThunkDispatch<AppStateType, void, any>) => {
+    dispatch(getPostDetailAction());
+    const response = await fetchPostByIdService(id);
+
+    if (response) {
+      dispatch(getPostDetailSuccessAction(response));
+    } else {
+      dispatch(getPostDetailErrorAction(response));
+    }
+  };
+};
+
+// COMMENTS ACTION
+
+export const getCommentsAction = (): GetCommentsActionType => {
+  return {
+    type: ActionConstType.GET_COMMENTS,
+  };
+};
+
+export const getCommentsSuccessAction = (
+  data: Comments[]
+): GetCommentsSuccessActionType => {
+  return {
+    type: ActionConstType.GET_COMMENTS_SUCCESS,
+    data,
+  };
+};
+
+export const getCommentsErrorAction = (
+  error: any
+): GetCommentsErrorActionType => {
+  return {
+    type: ActionConstType.GET_COMMENTS_ERROR,
+    error,
+  };
+};
+
+export const fetchCommentsAction = (id: number) => {
+  return async (dispatch: ThunkDispatch<AppStateType, void, any>) => {
+    dispatch(getCommentsAction());
+    const response = await fetchCommentsService(id);
+
+    if (response.data) {
+      dispatch(getCommentsSuccessAction(response.data));
+    } else {
+      dispatch(getCommentsErrorAction(response));
+    }
+  };
+};
+
+export const addCommentToListLikeAction = (comment: Comments) => {
+  return {
+    type: ActionConstType.ADD_COMMENT_TO_LIKE_LIST,
+    likeList: comment,
   };
 };

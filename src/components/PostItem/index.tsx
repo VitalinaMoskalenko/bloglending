@@ -27,7 +27,7 @@ const Container = styled.li`
   }
 `;
 
-const HeroContainer = styled.div`
+const PostContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -85,11 +85,11 @@ type PropsType = {
 const PostItem = ({ name, description, onClick }: PropsType) => {
   return (
     <Container onClick={onClick}>
-      <HeroContainer>
+      <PostContainer>
         <Info>
           <H3>{name}</H3>
         </Info>
-      </HeroContainer>
+      </PostContainer>
       <Description>{description}</Description>
     </Container>
   );

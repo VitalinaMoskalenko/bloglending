@@ -1,1 +1,2 @@
-export * from "./PostsResponceType";
+export * from "./CommentsResponseType";
+export * from "./PostsResponseType";

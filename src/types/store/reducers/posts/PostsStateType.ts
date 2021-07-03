@@ -1,10 +1,10 @@
+import { Comments, Posts } from "../../../models";
+
 export type PostsStateType = {
-  postList: {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }[];
+  postList: Posts[];
+  selectedPostDetail: Posts | null;
+  commentList: Comments[];
+  likeList: Comments[];
   error: any;
-  isLoadingPosts: boolean;
+  isLoading: boolean;
 };
