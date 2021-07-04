@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const PostsContainer = styled.ul`
   margin-bottom: 10px;
+  padding: 0px;
 `;
 
 const Home = () => {
