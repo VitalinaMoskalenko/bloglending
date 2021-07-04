@@ -140,3 +140,10 @@ export const addCommentToListLikeAction = (comment: Comments) => {
     likeList: comment,
   };
 };
+
+export const deleteCommentFromListLikeAction = (id: number) => {
+  return {
+    type: ActionConstType.DELETE_COMMENT_FROM_LIKE_LIST,
+    id: id,
+  };
+};

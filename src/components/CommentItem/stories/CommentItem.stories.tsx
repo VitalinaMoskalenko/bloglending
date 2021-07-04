@@ -9,6 +9,7 @@ export const defaultComment = () => (
 occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint
 nostrum voluptatem reiciendis et"
     email="Jayne_Kuhic@sydney.com"
+    isToggle={false}
     onClick={() => {}}
   />
 );

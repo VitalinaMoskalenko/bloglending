@@ -35,20 +35,21 @@ const Author = styled(H5)`
 `;
 
 type PropsType = {
+  isToggle: boolean;
   name: string;
   body: string;
   email: string;
   onClick: () => void;
 };
 
-const CommentItem = ({ name, body, email, onClick }: PropsType) => {
+const CommentItem = ({ name, body, email, isToggle, onClick }: PropsType) => {
   return (
     <Container>
       <Name>{name}</Name>
       <Body>{body}</Body>
       <CommentBottom>
         <Author>{email}</Author>
-        <FavoriteToggle onClick={onClick} />
+        <FavoriteToggle isToggle={isToggle} onClick={onClick} />
       </CommentBottom>
     </Container>
   );

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders PostItem correctly 1`] = `
+<li
+  className="sc-iCoGMd hNhGTR"
+  onClick={[Function]}
+>
+  <div
+    className="sc-fujyAs hMTAzb"
+  >
+    <div
+      className="sc-iqAclL bsILWn"
+    >
+      <h1
+        className="sc-dlnjwi czuNcg"
+      >
+        name
+      </h1>
+    </div>
+  </div>
+  <p
+    className="sc-jSFjdj sc-crzoAE bQuzKy fqRwMk"
+  >
+    description
+  </p>
+</li>
+`;

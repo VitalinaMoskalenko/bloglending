@@ -12,7 +12,9 @@ const IsFavoriteToggle = styled(FavoriteToggle).attrs({
 export default { title: "FavoriteToggle" };
 
 export const defaultFavoriteToggle = () => (
-  <FavoriteToggle onClick={() => {}} />
+  <FavoriteToggle isToggle={false} onClick={() => {}} />
 );
 
-export const isFavoriteToggle = () => <IsFavoriteToggle onClick={() => {}} />;
+export const isFavoriteToggle = () => (
+  <FavoriteToggle isToggle={true} onClick={() => {}} />
+);

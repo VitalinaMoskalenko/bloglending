@@ -73,6 +73,12 @@ export function posts(state = initialState, action: BlogReducerActionType) {
         ...state,
         likeList: [...state.likeList, action.likeList],
       };
+
+    case ActionConstType.DELETE_COMMENT_FROM_LIKE_LIST:
+      return {
+        ...state,
+        likeList: [...state.likeList.filter((item) => item.id !== action.id)],
+      };
     default:
       return state;
   }

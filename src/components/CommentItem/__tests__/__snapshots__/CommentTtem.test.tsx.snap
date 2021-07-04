@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders commentItem correctly 1`] = `
+<li
+  className="sc-iwajpm bhrevb"
+>
+  <h1
+    className="sc-eCApnc sc-cxNHIi TwDaM hksLek"
+  >
+    name
+  </h1>
+  <p
+    className="sc-bdnxRM jupkGm"
+  >
+    body
+  </p>
+  <div
+    className="sc-lmgQwP hUAZNt"
+  >
+    <h1
+      className="sc-gKAaRy sc-iJCRrE kXpCcI bDMOXt"
+    >
+      email
+    </h1>
+    <div>
+      <h1
+        className="sc-hKFxyN sc-bCwfaz cEUUoP kaCpzI"
+        onClick={[Function]}
+      >
+        ❣
+      </h1>
+    </div>
+  </div>
+</li>
+`;

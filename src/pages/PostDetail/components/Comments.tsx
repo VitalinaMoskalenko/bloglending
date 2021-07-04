@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { CommentItem } from "../../../components";
 import {
   addCommentToListLikeAction,
+  deleteCommentFromListLikeAction,
   fetchCommentsAction,
 } from "../../../store/actions";
 import {
@@ -38,14 +39,25 @@ const Comments = ({ id }: PropsType) => {
 
   const commentList = useSelector(getCommentListSelector);
 
-  const addCommentToLIkeList = (comment: CommentsType) =>
+  const addCommentToListLike = (comment: CommentsType) =>
     dispatch(addCommentToListLikeAction(comment));
 
-  useEffect(() => {
-    console.log("commentList[0]", commentList[0]);
-  }, [commentList]);
+  const removeCommentFromListLike = (id: number) =>
+    dispatch(deleteCommentFromListLikeAction(id));
 
   const likeList = useSelector(getLikeListSelector);
+
+  const toggleLike = (item: CommentsType) => {
+    const likedItem = likeList.find(
+      (likedComments) => likedComments.id === item.id
+    );
+
+    if (!likedItem) {
+      addCommentToListLike(item);
+    } else {
+      removeCommentFromListLike(item.id);
+    }
+  };
 
   useEffect(() => {
     console.log("likeList", likeList);
@@ -54,13 +66,18 @@ const Comments = ({ id }: PropsType) => {
   return (
     <Container>
       {commentList.map((item) => {
+        const likedItem = likeList.find(
+          (likedComments) => likedComments.id === item.id
+        );
+
         return (
           <CommentItem
             key={item.id}
             name={item.name}
             body={item.body}
             email={item.email}
-            onClick={() => addCommentToLIkeList(item)}
+            onClick={() => toggleLike(item)}
+            isToggle={!!likedItem}
           />
         );
       })}

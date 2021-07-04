@@ -1,14 +1,24 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 import styled from "styled-components";
 import { H2 } from "../Headings";
 
 type PropsType = {
   style?: CSSProperties;
+  isToggle: boolean;
   onClick: () => void;
 };
 
-const LikeButton = styled(H2)`
-  border: 1px solid black;
+type LikeButtonType = {
+  isToggle: boolean;
+};
+
+const LikeButton = styled(H2)<LikeButtonType>`
+  border: ${({ isToggle, theme }) =>
+    isToggle
+      ? `1px solid ${theme.colors.red}`
+      : `1px solid ${theme.colors.black}`};
+  color: ${({ isToggle, theme }) =>
+    isToggle ? `${theme.colors.red}` : `${theme.colors.black}`};
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -19,10 +29,12 @@ const LikeButton = styled(H2)`
   }
 `;
 
-const FavoriteToggle = ({ style, onClick }: PropsType) => {
+const FavoriteToggle = ({ isToggle, onClick, style }: PropsType) => {
   return (
-    <div onClick={onClick}>
-      <LikeButton style={style}>&#10083;</LikeButton>
+    <div>
+      <LikeButton onClick={onClick} isToggle={isToggle} style={style}>
+        &#10083;
+      </LikeButton>
     </div>
   );
 };

@@ -75,6 +75,7 @@ interface AddCommentToLikeListActionType extends Action {
 
 interface DeleteCommentFromLikeListActionType extends Action {
   type: ActionConstType.DELETE_COMMENT_FROM_LIKE_LIST;
+  id: number;
 }
 
 type BlogReducerActionType =
